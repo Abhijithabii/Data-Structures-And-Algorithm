@@ -103,7 +103,18 @@ class LinkedList:
 
     def remove_by_value(self, remove_value):
         # remove first node that contain the value to be removed
-        pass
+        itr = self.head
+        if itr.data == remove_value:
+            self.head = self.head.next
+            return
+        
+        while itr.next:
+            if itr.next.data == remove_value:
+                itr.next= itr.next.next
+                return
+            itr = itr.next
+        
+
 
     def reverse_linked_list(self):
         if self.head is None:
@@ -130,4 +141,5 @@ if __name__ == '__main__':
     l1.show_linked_list()
     l1.get_index(5)
     l1.insert_after_value(9,11)
+    l1.remove_by_value(11)
     l1.show_linked_list()
