@@ -89,7 +89,14 @@ class LinkedList:
 
 
     def insert_after_value(self,data_after, data_to_insert):
-        pass
+        
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert, itr.next)
+                return
+            itr = itr.next
+        return
     # search for first occurance of data after value in linked list
     # now insert the data to insert after the data after
 
@@ -122,4 +129,5 @@ if __name__ == '__main__':
     l1.delete_at_index(5)
     l1.show_linked_list()
     l1.get_index(5)
+    l1.insert_after_value(9,11)
     l1.show_linked_list()
