@@ -121,11 +121,17 @@ class LinkedList:
             print("Linked List is Empty")
             return
         itr = self.head
-        list2 = ''
-        while itr.next:
+        prev = None
+        
+        while itr:
+            next_temp = itr.next
+            itr.next = prev
             prev = itr
-            next_itr = itr.next
-            itr.next = None
+            itr = next_temp
+        self.head = prev
+        self.show_linked_list() 
+        return 
+            
 
 
 
@@ -143,3 +149,4 @@ if __name__ == '__main__':
     l1.insert_after_value(9,11)
     l1.remove_by_value(11)
     l1.show_linked_list()
+    l1.reverse_linked_list()
