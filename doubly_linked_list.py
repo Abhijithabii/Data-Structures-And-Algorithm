@@ -24,9 +24,12 @@ class DoublyLinkedList:
         return
     def insert_at_tail(self,val):
         new_node = Node(val)
-        self.tail.next = new_node
-        new_node.prev = self.tail
-        self.tail = new_node
+        if self.tail is None:
+            self.head = self.tail = new_node
+        else:
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail = new_node
         self.size += 1
         return
         
