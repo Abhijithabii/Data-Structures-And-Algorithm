@@ -34,10 +34,35 @@ class DoublyLinkedList:
         return
         
     def delete_at_head(self):
-        pass
+        if self.head is None:
+            print('Empty Linked List')
+            return None
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+
+        self.size -= 1
+        return
+
+
     def delete_at_tail(self):
-        pass
+        if self.tail is None:
+            print("Linked List is Empty")
+            return None
+        if self.head == self.tail:
+            self.head = self.tail = None
+        else:
+            prev_last = self.tail.prev
+            prev_last.next = None
+        self.size -= 1
+
     def insert_at_position(self,value,position):
+        """
+        Insert a node at a specific position (0-indexed).
+        position = 0 means head, position = size means tail.
+        """
         pass
     def delete_at_position(self,position):
         pass
@@ -50,12 +75,22 @@ class DoublyLinkedList:
         itr = self.head
         list1 = ''
         while itr:
-            list1 += str(itr.val) + '-->'
+            list1 += '<--' + str(itr.val) + '-->'
             itr = itr.next
         print(list1)
         return
     def traverse_backword(self):
-        pass
+        if self.tail is None:
+            print('Linked List Is Empty')
+            return
+        current = self.tail
+        l2 = ''
+        while current:
+            l2 += '<--' + str(current.val) + '-->'
+            current = current.prev
+
+        print(l2)
+        return
 
 if __name__ == '__main__':
     l1 = DoublyLinkedList()
@@ -64,3 +99,9 @@ if __name__ == '__main__':
     l1.insert_at_head(2)
     l1.insert_at_tail(5)
     l1.traverse_forward()
+    l1.delete_at_head()
+    l1.traverse_forward()
+    l1.delete_at_tail()
+    l1.traverse_forward()
+    # l1.traverse_backword()
+    
