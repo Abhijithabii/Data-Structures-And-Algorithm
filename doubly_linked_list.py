@@ -27,6 +27,7 @@ class DoublyLinkedList:
         self.tail.next = new_node
         new_node.prev = self.tail
         self.tail = new_node
+        self.size += 1
         return
         
     def delete_at_head(self):
