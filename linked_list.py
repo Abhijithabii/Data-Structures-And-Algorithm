@@ -42,6 +42,7 @@ class LinkedList:
         if idx == 0:
             node.next = self.head
             self.head = node
+            return
         count = 1
         itr = self.head
         while itr.next:
