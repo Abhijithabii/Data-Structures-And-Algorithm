@@ -63,35 +63,34 @@ class DoublyLinkedList:
         Insert a node at a specific position (0-indexed).
         position = 0 means head, position = size means tail.
         """
+        if position < 0 or position > self.size -1:
+            print("Index Out of Range")
+            return
         new_node = Node(value)
         if position == 0:
-            print('Inside 0 position')
-            self.head.prev = new_node
-            new_node.next = self.head
-            self.head = new_node
-            self.size += 1
+            self.insert_at_head(value)
             return
-        elif position == self.size -1:
-            self.tail.next = new_node
-            new_node.prev = self.tail
-            self.size += 1
+        if position == self.size -1:
+            self.insert_at_tail(value)
             return
-        else:
-            counter = 0
-            current = self.head
-            while current.next:
-                if counter == position-1:
-                    new_node.next = current.next
-                    current.next.prev = new_node
-                    new_node.prev = current
-                    current.next = new_node
-                    self.size += 1
-                    return
-                counter += 1
-                current = current.next
+        
+       
+        current = self.head
+
+        for _ in range(position):
+            current = current.next
+        
+        new_node.next = current
+        new_node.prev = current.prev
+
+        current.prev.next = new_node
+        current.prev = new_node
+        self.size += 1
+        return
 
 
-        pass
+
+        
     def delete_at_position(self,position):
         pass
     def search(self, value):
@@ -131,6 +130,6 @@ if __name__ == '__main__':
     # l1.traverse_forward()
     # l1.delete_at_tail()
     # l1.traverse_backword()
-    l1.insert_at_position(1,2)
+    l1.insert_at_position(1,1)
     l1.traverse_forward()
     
