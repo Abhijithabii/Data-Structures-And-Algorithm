@@ -113,7 +113,25 @@ class DoublyLinkedList:
 
 
     def delete_by_value(self,value):
-        pass
+        if self.head.val == value:
+            self.delete_at_head()
+            return
+        if self.tail.val == value:
+            self.delete_at_tail()
+            return
+        current = self.head
+        while current.next:
+            if current.next.val == value:
+                current.next.next.prev = current
+                current.next = current.next.next
+                self.size -= 1
+                return
+            current = current.next
+        print("Value not in the linked list")
+        return
+
+
+        
     def get_size(self):
         return self.size
     def get_head(self):
@@ -173,5 +191,6 @@ if __name__ == '__main__':
     print(l1.get_tail())
     print(l1.get_size())
     l1.delete_at_position(3)
+    l1.delete_by_value(3)
     l1.traverse_forward()
     
