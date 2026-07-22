@@ -93,6 +93,15 @@ class DoublyLinkedList:
         
     def delete_at_position(self,position):
         pass
+    def delete_by_value(self,value):
+        pass
+    def get_size(self):
+        return self.size
+    def get_head(self):
+        return self.head.val if self.head else None
+    def get_tail(self):
+        return self.tail.val if self.tail else None
+
     def search(self, value):
         current = self.head
         while current:
@@ -141,4 +150,7 @@ if __name__ == '__main__':
     l1.insert_at_position(1,1)
     l1.traverse_forward()
     l1.search(5)
+    print(l1.get_head())
+    print(l1.get_tail())
+    print(l1.get_size())
     
