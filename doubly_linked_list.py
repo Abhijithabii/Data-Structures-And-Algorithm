@@ -94,7 +94,15 @@ class DoublyLinkedList:
     def delete_at_position(self,position):
         pass
     def search(self, value):
-        pass
+        current = self.head
+        while current:
+            if current.val == value:
+                print("The search value present in the linked list")
+                return
+            current = current.next
+        print("The searched value not present in the linked list")
+        return
+
     def traverse_forward(self):
         if self.head is None:
             print("Linked List is Empty")
@@ -132,4 +140,5 @@ if __name__ == '__main__':
     # l1.traverse_backword()
     l1.insert_at_position(1,1)
     l1.traverse_forward()
+    l1.search(5)
     
