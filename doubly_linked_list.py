@@ -92,7 +92,26 @@ class DoublyLinkedList:
 
         
     def delete_at_position(self,position):
-        pass
+        if position < 0 or position > self.size -1:
+            print('Index out of range')
+            return
+        if position == 0:
+            self.delete_at_head()
+            return
+        elif position == self.size -1:
+            self.delete_at_tail()
+        else:
+            current = self.head
+            for _ in range(position-1):
+                current = current.next
+            current.next.next.prev = current
+            current.next = current.next.next
+            self.size -= 1
+            return
+
+        
+
+
     def delete_by_value(self,value):
         pass
     def get_size(self):
@@ -153,4 +172,6 @@ if __name__ == '__main__':
     print(l1.get_head())
     print(l1.get_tail())
     print(l1.get_size())
+    l1.delete_at_position(3)
+    l1.traverse_forward()
     
