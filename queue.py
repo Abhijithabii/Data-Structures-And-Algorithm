@@ -3,19 +3,34 @@ class QueueList:
         self.items = []
 
     def enqueue(self, data):
-        pass
+        return self.items.append(data)
 
     def dequeue(self):
-        pass
+        if self.is_empty():
+            return IndexError("Queue is Empty")
+        return self.items.pop(0)
 
     def peek(self):
-        pass
+        if self.is_empty():
+            return IndexError("Queue is Empty")
+        return self.items[0]
 
     def show_queues(self):
-        pass
+        return self.items
+    
 
     def is_empty(self):
-        pass
+        return len(self.items) == 0
+
+
+
+q1 = QueueList()
+q1.enqueue(1)
+q1.enqueue(2)
+q1.enqueue(4)
+q1.enqueue(6)
+q1.dequeue()
+print(q1.show_queues())
 
 
 
